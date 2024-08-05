@@ -1,12 +1,12 @@
 import express from "express";
-import { getAllUsers } from "../controllers/user-controllers";
+import { getAllUsers, signup } from "../controllers/user-controllers";
 
 
 const userRouter =express.Router();
 
 
 userRouter.get("/",getAllUsers); 
-userRouter.post("/",getAllUsers); 
+userRouter.post("/signup",signup); 
 
 
 

@@ -4,7 +4,7 @@ export const getAllUsers = async (req, res, next) => {
   try {
     users = await User.find();
   } catch (err) {
-    return next(err);
+    return console.log(err);
   }
 
   if (!users) {
@@ -31,12 +31,12 @@ export const signup = async (req, res, next) => {
   let user;
   try { 
     user = new User({name,email,password});
-    user = user.save();
+    user = await user.save();
 
 
   } catch(err){
 
-    return next(err);
+    return console.log(err);
 
 
 
@@ -52,3 +52,4 @@ export const signup = async (req, res, next) => {
 
 
 };
+
