@@ -27,6 +27,21 @@ export const signup = async (req, res, next) => {
   ) {
     return res.status(422).json({ message: "Invalid inputs" });
   }
+  const hashedPassword= bcrypt.hashSync(password);
+
+
+let user;
+try {
+  user = await User.findByIdAndUpdate(id,{name,email,password})
+} catch (err) {
+  return console.log(err);
+  
+}
+if(!user){
+  return res.status(500).json({ message:"Something went wrong"});
+}
+res.status(200).json({message:"Updates successfully"})
+};
 
   const hashedPassword= bcrypt.hashSync(password);
 
@@ -58,5 +73,7 @@ export const signup = async (req, res, next) => {
 
 export const updateUser = async(req,res,next) => {
    const id= req.params.id;
-   
+
 }
+
+
