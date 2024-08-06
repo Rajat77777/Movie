@@ -1,4 +1,5 @@
 import User from "../models/User";
+import bcrypt from "bcryptjs";
 export const getAllUsers = async (req, res, next) => {
   let users;
   try {
@@ -27,10 +28,12 @@ export const signup = async (req, res, next) => {
     return res.status(422).json({ message: "Invalid inputs" });
   }
 
+  const hashedPassword= bcrypt.hashSync(password);
+
 
   let user;
   try { 
-    user = new User({name,email,password});
+    user = new User({name,email,password:hashedPassword});
     user = await user.save();
 
 
@@ -53,3 +56,7 @@ export const signup = async (req, res, next) => {
 
 };
 
+export const updateUser = async(req,res,next) => {
+   const id= req.params.id;
+   
+}
