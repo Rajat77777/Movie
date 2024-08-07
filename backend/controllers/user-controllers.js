@@ -32,9 +32,9 @@ export const signup = async (req, res, next) => {
 
 let user;
 try {
-  user = await User.findByIdAndUpdate(id,{name,email,password})
-} catch (err) {
-  return console.log(err);
+  user = await User.findByIdAndUpdate(id,{name,email,password:hashedPassword})
+} catch (errr) {
+  return console.log(errr);
   
 }
 if(!user){
@@ -67,13 +67,10 @@ res.status(200).json({message:"Updates successfully"})
 
   return res.status(201).json({user})
  
-
-
 };
 
-export const updateUser = async(req,res,next) => {
-   const id= req.params.id;
 
-}
+
+
 
 

@@ -7,8 +7,7 @@ const userRouter =express.Router();
 
 userRouter.get("/",getAllUsers); 
 userRouter.post("/signup",signup); 
-userRouter.put("/:id");
-
+userRouter.put("/:id",updateUser);
 
 
 export default userRouter;
