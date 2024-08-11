@@ -96,7 +96,23 @@ export const updateUser = async(req, res, next)=>{
     return res.status(500).json({message:"Something went wrong"});
   }
   res.status(200).json({message:"Updated successfully"});
-}
+};
+
+export const deleteUser = async(req,res,next) => {
+  const id = req.params.id;
+  let user;
+  try {
+    user = await User.findByIdAndDelete(id);
+    
+  } catch (err) {
+    return console.log(err)
+    
+  }
+  if(!user){
+
+    return res.status(200).json({message:"Deleted Successfully"});
+  }
+};
 
 
 
