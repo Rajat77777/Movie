@@ -9,7 +9,7 @@ userRouter.get("/",getAllUsers);
 userRouter.post("/signup",signup); 
 userRouter.put("/:id",updateUser);
 userRouter.delete("/:id",deleteUser);
-
+userRouter.post("/login");
 
 export default userRouter;
 
