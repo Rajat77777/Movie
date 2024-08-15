@@ -1,12 +1,15 @@
 import express from "express";
 import mongoose from "mongoose";
 import userRouter from "./routes/user-routes";
+import adminRouter from "./routes/admin-routes";
 
 dotenv.config();
 const app = express();
 app.use(express.json());
 
 app.use("/user",userRouter);
+app.use("/admin",adminRouter);
+
 
 
 
