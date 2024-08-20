@@ -1,5 +1,6 @@
 import Admin from "../models/Admin";
 import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 
 export const addAdmin = async(req,res,next) => {
 
@@ -66,5 +67,11 @@ export const adminLogin = async(req,res,next) =>{
         return res.status(400).json({message:"Incorrect Password"});
      }
 
+     const token =jwt.sign({id:existingAdmin._id },process.env.SECRET_KEY,{
+        expiresIn: "7d",
+     });
+
+
      return res.status(200).json({message:"Authentication Complete"});
 };
+
