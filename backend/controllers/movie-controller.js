@@ -1,3 +1,8 @@
 export const addMovie = async(req,res,next)=>{
-    const extractToken = req.headers.authorization;
+    const extractedToken = req.headers.authorization.split(" ")[1];
+    if(!extractedToken && extractedToken.trim()===""){
+        return res.status(404).json({message:"Token not Found"});
+    }
+  let adminId;  
+
 };

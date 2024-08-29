@@ -9,6 +9,7 @@ app.use(express.json());
 
 app.use("/user",userRouter);
 app.use("/admin",adminRouter);
+app.use("/movie",movieRouter);
 
 
 
