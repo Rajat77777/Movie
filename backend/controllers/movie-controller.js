@@ -13,8 +13,11 @@ export const addMovie = async(req,res,next)=>{
       return res.status(400).json({message:`${err.message}`})
     }else{
       adminId = decrypted.id;
+      return;
     }
-  })
+  });
+
+  const {title,description,releaseDate,posterUrl,featured} = req.body;
 
 
   //create a new movie
