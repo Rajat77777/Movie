@@ -18,6 +18,17 @@ export const addMovie = async(req,res,next)=>{
   });
 
   const {title,description,releaseDate,posterUrl,featured} = req.body;
+  if(!title && title.trim()==="" && !description.trim()=="",!posterUrl && posterUrl.trim()==="" ){
+    return res.status(422).json({message:"Invaid Inputs"});
+  }
+
+  let movie;
+  try {
+    movie = mew Movie({title,description,releaseDate,featured,admin:adminId});
+  } catch (error) {
+
+    return console.log(err);
+  }
 
 
   //create a new movie
