@@ -17,15 +17,16 @@ export const addMovie = async(req,res,next)=>{
     }
   });
 
-  const {title,description,releaseDate,posterUrl,featured} = req.body;
+  const {title,description,releaseDate,posterUrl,featured,actors} = req.body;
   if(!title && title.trim()==="" && !description.trim()=="",!posterUrl && posterUrl.trim()==="" ){
     return res.status(422).json({message:"Invaid Inputs"});
   }
 
   let movie;
   try {
-    movie = mew Movie({title,description,releaseDate,featured,admin:adminId});
+    movie = mew Movie({title,description,releaseDate: new Date(`${releaseDate}`),featured,admin:adminId});
   } catch (error) {
+
 
     return console.log(err);
   }
