@@ -24,12 +24,23 @@ export const addMovie = async(req,res,next)=>{
 
   let movie;
   try {
-    movie = mew Movie({title,description,releaseDate: new Date(`${releaseDate}`),featured,admin:adminId});
-  } catch (error) {
+    movie = mew Movie({title,description,releaseDate: new Date(`${releaseDate}`),featured,actors,admin:adminId});
+    movie = await movie.save();
+
+  }
+
+  catch (error) {
 
 
     return console.log(err);
   }
+
+
+  if(!movie){
+    return res.status(500).json({message:"Request failed"});
+  }
+
+  return res.status(201).json({movie})
 
 
   //create a new movie
