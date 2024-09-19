@@ -24,7 +24,7 @@ export const addMovie = async(req,res,next)=>{
 
   let movie;
   try {
-    movie = mew Movie({title,description,releaseDate: new Date(`${releaseDate}`),featured,actors,admin:adminId});
+    movie = mew Movie({title,description,releaseDate: new Date(`${releaseDate}`),featured,actors,admin:adminId,posterUrl,title});
     movie = await movie.save();
 
   }
@@ -46,3 +46,4 @@ export const addMovie = async(req,res,next)=>{
   //create a new movie
 
 };
+
